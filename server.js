@@ -31,19 +31,20 @@ app.get('/hi', function (req, res) {
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var Door1Relay = new Gpio(4, 'out'); //use GPIO pin 4 as output
 
-app.get('/on', function (req, res) {
+app.all('/on', function (req, res) {
   Door1Relay.writeSync(1);
   res.json('ok -it should be working')
 })
 
-app.get('/off', function (req, res) {
+app.all('/off', function (req, res) {
   Door1Relay.writeSync(0);
   res.json('ok -it should stop')
 })
 
-app.get('/open-door',function(req, res){
+app.all('/open-door',function(req, res){
   // Open the door
   Door1Relay.writeSync(1);
   // Lock the door in 5 secs
   setTimeout(()=>Door1Relay.writeSync(0), 5000);
+  res.json('ok -I opened the door for a little bit')
 });
