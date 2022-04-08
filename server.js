@@ -32,8 +32,11 @@ var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(4, 'out'); //use GPIO pin 4 as output
 
 app.get('/on', function (req, res) {
-
   LED.writeSync(1);
   res.json('ok -it should be working')
+})
 
+app.get('/off', function (req, res) {
+  LED.writeSync(0);
+  res.json('ok -it should stop')
 })
