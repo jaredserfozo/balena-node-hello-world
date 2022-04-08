@@ -4,6 +4,10 @@ const favicon = require('serve-favicon')
 const app = express()
 const PORT = 80
 
+npm install
+npm install onoff
+
+
 app.use(favicon(join(__dirname, 'public', 'favicon.ico')))
 app.set('views', join(__dirname, 'views'))
 app.set('view engine', 'ejs')
@@ -26,3 +30,4 @@ app.listen(PORT, () => {
 app.get('/hi', function (req, res) {
   res.json('hello-world')
 })
+
