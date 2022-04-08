@@ -22,3 +22,7 @@ app.get('/', function (req, res) {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
 })
+
+app.get('/hi', function (req, res) {
+  res.json('hello-world')
+})
