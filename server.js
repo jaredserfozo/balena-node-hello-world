@@ -40,3 +40,10 @@ app.get('/off', function (req, res) {
   LED.writeSync(0);
   res.json('ok -it should stop')
 })
+
+app.get('/open-door',function(req, res){
+  // Open the door
+  LED.writeSync(1);
+  // Lock the door in 5 secs
+  SetTimeout(()=>LED.writeSync(0), 5000);
+});
