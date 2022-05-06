@@ -32,12 +32,12 @@ var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var Door1Relay = new Gpio(4, 'out'); //use GPIO pin 4 as output
 var Door2Relay = new Gpio(5, 'out'); //use GPIO pin 5 as output
 
-app.all('/on', function (req, res) {
+app.all('/door1on', function (req, res) {
   Door1Relay.writeSync(1);
   res.json('ok -it should be working')
 })
 
-app.all('/off', function (req, res) {
+app.all('/door1off', function (req, res) {
   Door1Relay.writeSync(0);
   res.json('ok -it should stop')
 })
@@ -57,3 +57,13 @@ app.all('/open-door2',function(req, res){
   setTimeout(()=>Door2Relay.writeSync(0), 5000);
   res.json('ok -I opened the door2 for a little bit')
 });
+
+app.all('/door2on', function (req, res) {
+  Door2Relay.writeSync(1);
+  res.json('ok -it should be working')
+})
+
+app.all('/door2off', function (req, res) {
+  Door2Relay.writeSync(0);
+  res.json('ok -it should stop')
+})
